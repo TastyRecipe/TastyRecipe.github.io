@@ -7,9 +7,9 @@
 </head>
 <body>
     <main>
-        <input type="file" accept="image/*. video/*">
+        <input type="file" accept="image/*. video/*" multiple name="img1" onchange="onFileSelected(event)">
         <p>This is some Text. Please give me a photo</p>
-        <input type="file" accept="image/*. video/*">
+        <input type="file" accept="image/*. video/*" name="img2">
 
         <p>Here is a Form</p>
 
@@ -22,17 +22,49 @@
             <input type="text" id="q2" name="test2" placeholder="put stuff here please">
             <br>
             <label for="im1">Add an image pls</label><br>
-            <input type="file" accept="image/*. video/*">
+            <input type="file" accept="image/*. video/*" name="img3">
             <br>
             <label for="q3">more words here</label><br>
             <textarea id="q3" name="test3" rows="6" cols="100">test of words here</textarea>
             <br>
-            <input type="file" accept="image/*. video/*">
+            <input type="file" accept="image/*. video/*" name="img4">
             <br>
             <input type="submit">
         </form>
-        <br>
         <p>End of Form</p>
+
+        <p>Heres the first image you selected!</p>
+
+        <img id="myImage" height="200">
+        <p id="imgName">Name:</p>
+        <script>
+            function onFileSelected(event) {
+                var selectedFile = event.target.files[0];
+                var reader = new FileReader();
+
+                var imgTag = document.getElementById("myImage");
+                var imgName = document.getElementById("imgName");
+                imgTag.title = selectedFile.name;
+                imgName.innerHTML = "Nombre:"+imgTag.title;
+
+                reader.onload = function(event) {
+                    imgTag.src = event.target.result;
+                    
+                };
+                reader.readAsDataURL(selectedFile);
+            }
+        </script>
+
+        <input type="file" id="file-selector" multiple>
+        <script>
+        const fileSelector = document.getElementById('file-selector');
+        fileSelector.addEventListener('change', (event) => {
+            const fileList = event.target.files;
+            console.log(fileList);
+            console.log("Test");
+            console.log(fileList[0].name);
+        });
+        </script>
     </main>
     
 </body>
