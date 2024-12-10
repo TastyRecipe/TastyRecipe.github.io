@@ -29,7 +29,15 @@
                 Hello World!
                 <a href="calendar.html">Test</a>
             </p>
+            <input type="button" id="btn_1" name="btn_1" value="Click Me" onclick="parseThis()">
         </div>
+        <script>
+            function parseThis(){
+                var d = document.getElementById("text_1");
+                d.innerHTML = "Nombre:"+ JSON.parse(Recipes.json);
+            }
+            
+        </script>
     </main>
 </body>
 </html>
