@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Test</title>
 </head>
 <body>
     <main>
+        <main>
+            <P>
+                This is some text for development.
+            </P>
+            <input type="file" accept="image/*. video/*">
+            <p>Something should be here, hopefully.</p>
+        </main>
         <input type="file" accept="image/*. video/*" multiple name="img1" onchange="onFileSelected(event)">
         <p>This is some Text. Please give me a photo</p>
         <input type="file" accept="image/*. video/*" name="img2">
@@ -35,7 +43,7 @@
 
         <p>Heres the first image you selected!</p>
 
-        <img id="myImage" height="200">
+        <img id="myImage">
         <p id="imgName">Name:</p>
         <script>
             function onFileSelected(event) {
@@ -64,6 +72,16 @@
             console.log("Test");
             console.log(fileList[0].name);
         });
+        </script>
+
+        <input type="button" 
+            value="Generate PDF" 
+            onclick="saveToPDF()">
+
+        <script>
+            function saveToPDF(){
+                html2pdf(document.body).set({pagebreak: {mode: 'avoid-all'}})
+            }
         </script>
     </main>
     
