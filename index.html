@@ -29,7 +29,8 @@
                 Hello World!
                 <a href="calendar.html">Test</a>
             </p>
-            <input type="button" id="btn_1" name="btn_1" value="Click Me" onclick="fetchJSONData()">
+            <input type="button" id="btn_1" name="btn_1" value="Fetch" onclick="fetchJSONData()">
+            <input type="button" id="btn_2" name="btn_2" value="Parse" onclick="parseThis()">
         </div>
         <script>
             function fetchJSONData() {
@@ -53,21 +54,9 @@
             function parseThis(){
                 console.log("Fired");
                 var d = document.getElementById("text_1");
-                var file = fetch("./Recipes.json");
-                console.log(file.json());
+                var f = fetch("./Recipes.json");
+                console.log(f.json());
                 d.innerHTML = "Nombre:";
-
-
-
-                var fs = require('fs');
-
-                fs.readFile('file.json', 'utf-8', function (err, data) {
-                    if (err) throw err;
-
-                    var obj = JSON.parse(data);
-
-                    console.log(obj);
-                });
                 var jObj = JSON.parse(Recipes.json);
             }
             
