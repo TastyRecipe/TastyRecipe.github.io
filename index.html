@@ -29,12 +29,46 @@
                 Hello World!
                 <a href="calendar.html">Test</a>
             </p>
-            <input type="button" id="btn_1" name="btn_1" value="Click Me" onclick="parseThis()">
+            <input type="button" id="btn_1" name="btn_1" value="Click Me" onclick="fetchJSONData()">
         </div>
         <script>
+            function fetchJSONData() {
+                console.log("Fired Fetch");
+                fetch("C:\\Users\\gemof\\Documents\\Workspace\\TastyRecipe.github.io\\Recipes.json")
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error
+                                (`HTTP error! Status: ${res.status}`);
+                        }
+                        return res.json();
+                    })
+                    .then((data) =>
+                        console.log(data))
+                    .catch((error) =>
+                        console.error("Unable to fetch data:", error));
+            }
+            // fetchJSONData();
+        </script>
+        <script>
             function parseThis(){
+                console.log("Fired");
                 var d = document.getElementById("text_1");
-                d.innerHTML = "Nombre:"+ JSON.parse(Recipes.json);
+                var file = fetch("./Recipes.json");
+                console.log(file.json());
+                d.innerHTML = "Nombre:";
+
+
+
+                var fs = require('fs');
+
+                fs.readFile('file.json', 'utf-8', function (err, data) {
+                    if (err) throw err;
+
+                    var obj = JSON.parse(data);
+
+                    console.log(obj);
+                });
+                var jObj = JSON.parse(Recipes.json);
             }
             
         </script>
