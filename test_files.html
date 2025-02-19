@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<main>
+    <input type="button" id="btn_1" name="btn_1" value="Fetch" onclick="fetchJSONData()">
+    <input type="button" id="btn_2" name="btn_2" value="Parse" onclick="parseThis()">
+    </div>
+    <script>
+        function fetchJSONData() {
+            console.log("Fired Fetch");
+            fetch("./Recipes.json")
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            (`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((data) =>
+                    console.log(data))
+                .catch((error) =>
+                    console.error("Unable to fetch data:", error));
+        }
+        // fetchJSONData();
+    </script>
+    <script type="module" src="./script.js"></script>
+    <script>
+        // import user from "./sample.json" assert { type: 'json' };
+        function parseThis() {
+            console.log("Fired");
+            // console.log(user)
+
+            // var d = document.getElementById("text_1");
+            // var f = fetch("./Recipes.json");
+            // var dat = f.json();
+            // console.log(dat);
+            // d.innerHTML = "Nombre:";
+            // var jObj = JSON.parse(Recipes.json);
+        }    
+    </script>
+    </main>
+</body>
+
+</html>
